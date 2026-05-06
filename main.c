@@ -290,7 +290,7 @@ int menu_ordenamiento() {
 
 void cargar_palabra(char *palabra) {
     printf("Ingresé una palabra:");
-    scanf("%s", palabra);
+    scanf(" %[^\n]", palabra);
 }
 
 void ordenar_palabras(char palabras[5][MAX_STR], char opcion[5]) {
