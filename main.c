@@ -3,11 +3,14 @@
 #include <stdio.h>
 #include <windows.h>
 #include <string.h>
+#include <math.h>
 
 // Macro para establecer dimension maxima de las matrices, ejercicio 1.
 #define DIMENSION_MAX 2
 // Macro para establecer dimension maxima de los strings, ejercicio 2.
 #define MAX_STR 20
+// Macro PI con varios decimales para tener precisión
+#define PI 3.14159265358979323846
 
 /**
  * Utilízada para ejecutar el ejercicio 1.
@@ -77,6 +80,16 @@ void ordenar_palabras(char palabras[5][MAX_STR], char opcion[5]);
  * @param palabras
  */
 void imprimir_palabras(char palabras[5][MAX_STR]);
+/**
+ * Utilízada para la conversión a polares_a_cartesianas en el ejercicio 4.
+ * @param r, theta, y, x
+ */
+void polares_a_cartesianas(double r, double theta, double *x, double *y);
+/**
+ * Utilízada para la conversión a cartesianas_a_polares en el ejercicio 4.
+ * @param r, theta, y, x
+ */
+void cartesianas_a_polares(double x, double y, double *r, double *theta);
 
 /**
  * Structs utilizadas para el ejercicio 2.
@@ -344,7 +357,27 @@ int menu_conversiones() {
     return opcion;
 }
 
+void polares_a_cartesianas(double r, double theta, double *x, double *y) {
+    *x = r * cos(theta);
+    *y = r * sin(theta);
+}
 
+void cartesianas_a_polares(double x, double y, double *r, double *theta) {
+    *r = sqrt((x * x) + (y * y));
+    if (x > 0 && y >= 0) {
+        *theta = atan(y / x);
+    } else if (x < 0) {
+        *theta = atan(y / x) + PI;
+    } else if (x > 0 && y < 0) {
+        *theta = atan(y / x) + (2 * PI);
+    } else if (x == 0 && y > 0) {
+        *theta = PI / 2.0;
+    } else if (x == 0 && y < 0) {
+        *theta = (3.0 * PI) / 2.0;
+    } else {
+        *theta = 0.0;
+    }
+}
 
 // Función Main
 int main(void) {
