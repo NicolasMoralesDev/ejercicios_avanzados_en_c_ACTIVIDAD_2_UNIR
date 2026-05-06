@@ -324,6 +324,7 @@ void imprimir_palabras(char palabras[5][MAX_STR]) {
 // Funciones del ejercicio 4
 void ejercicio4() {
     int OPCION;
+    double x, y, r, theta;
     do {
         OPCION = menu_conversiones();
         switch (OPCION) {
@@ -332,10 +333,21 @@ void ejercicio4() {
                 break;;
             }
             case 1: {
+                printf("Ingrese la coordenada X: ");
+                scanf("%lf", &x);
+                printf("Ingrese la coordenada Y: ");
+                scanf("%lf", &y);
+                cartesianas_a_polares(x, y, &r, &theta);
+                printf("\n El vector (%.0f,%.0f) en coordenadas cartesianas es (%.2f, %.4f) en polares.\n", x, y, r, theta);
                 break;
             }
             case 2: {
-
+                printf("Ingrese el radio (r): ");
+                scanf("%lf", &r);
+                printf("Ingrese el ángulo en radianes (theta): ");
+                scanf("%lf", &theta);
+                polares_a_cartesianas(r, theta, &x, &y);
+                printf("\n El vector (%.0f, %.2f) en polares es (%.3f, %.3f) en cartesianas.\n", r, theta, x, y);
                 break;
             }
             default: {
