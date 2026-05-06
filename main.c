@@ -214,9 +214,9 @@ void cargar_empleado(TEmpleado *empleado) {
     char apellido[MAX_STR];
     printf("Ingresé los datos del empleado:\n");
     printf("Ingresé el Nombre:");
-    scanf("%s", nombre);
+    scanf(" %[^\n]", nombre);
     printf("Ingresé los Apellidos:");
-    scanf("%s", apellido);
+    scanf(" %[^\n]", apellido);
     printf("Ingresé el Código del Empleado:");
     scanf("%i", &empleado->codigo_empleado);
     //Mostramos la información del empleado.
@@ -229,9 +229,9 @@ void cargar_puesto(TPuesto *puesto) {
     char estudios[MAX_STR];
     printf("Ingresé los datos del puesto:\n");
     printf("Ingresé el Nombre del puesto:");
-    scanf("%s", nombre);
+    scanf(" %[^\n]", nombre);
     printf("Ingresé el Estudio:");
-    scanf("%s", estudios);
+    scanf(" %[^\n]", estudios);
     printf("Ingresé el Sueldo:");
     scanf("%i", &puesto->sueldo);
     //Mostramos la información del empleado.
